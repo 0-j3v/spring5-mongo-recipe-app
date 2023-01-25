@@ -2,8 +2,8 @@ package guru.springframework.repositories;
 
 import guru.springframework.domain.UnitOfMeasure;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -16,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by jt on 6/17/17.
  */
-@Ignore
+@Disabled
 @RunWith(SpringRunner.class)
 @DataJpaTest
 public class UnitOfMeasureRepositoryIT {
