@@ -1,12 +1,15 @@
 package guru.springframework.repositories;
 
+import guru.springframework.bootstrap.RecipeBootstrap;
 import guru.springframework.domain.UnitOfMeasure;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.jupiter.api.Disabled;
+import guru.springframework.repositories.reactive.CategoryReactiveRepository;
+import guru.springframework.repositories.reactive.RecipeReactiveRepository;
+import guru.springframework.repositories.reactive.UnitOfMeasureReactiveRepository;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Optional;
@@ -16,16 +19,36 @@ import static org.junit.Assert.assertEquals;
 /**
  * Created by jt on 6/17/17.
  */
-@Disabled
 @RunWith(SpringRunner.class)
-@DataJpaTest
+@DataMongoTest
 public class UnitOfMeasureRepositoryIT {
 
     @Autowired
     UnitOfMeasureRepository unitOfMeasureRepository;
 
-    @Before
+    @Autowired
+    CategoryRepository categoryRepository;
+
+    @Autowired
+    RecipeRepository recipeRepository;
+
+    @Autowired
+    UnitOfMeasureReactiveRepository unitOfMeasureReactiveRepository;
+
+    @Autowired
+    CategoryReactiveRepository categoryReactiveRepository;
+
+    @Autowired
+    RecipeReactiveRepository recipeReactiveRepository;
+    @BeforeEach
     public void setUp() throws Exception {
+        recipeRepository.deleteAll();
+        unitOfMeasureRepository.deleteAll();
+        categoryRepository.deleteAll();
+
+        RecipeBootstrap recipeBootstrap = new RecipeBootstrap(categoryRepository, recipeRepository, unitOfMeasureRepository, categoryReactiveRepository, recipeReactiveRepository, unitOfMeasureReactiveRepository);
+
+        recipeBootstrap.onApplicationEvent(null);
     }
 
     @Test
