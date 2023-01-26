@@ -38,7 +38,7 @@ class UnitOfMeasureReactiveRepositoryTest {
     }
 
     @Test
-    public void testFindByDescription() throws Exception {
+    public void testFindByDescription() {
         UnitOfMeasure uom = new UnitOfMeasure();
         uom.setDescription(EACH);
 

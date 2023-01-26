@@ -24,7 +24,7 @@ public class CategoryReactiveRepositoryTest {
     }
 
     @Test
-    public void testSave() throws Exception {
+    public void testSave() {
         Category category = new Category();
         category.setDescription("Foo");
 
@@ -36,7 +36,7 @@ public class CategoryReactiveRepositoryTest {
     }
 
     @Test
-    public void testFindByDescription() throws Exception {
+    public void testFindByDescription() {
         Category category = new Category();
         category.setDescription("Foo");
 

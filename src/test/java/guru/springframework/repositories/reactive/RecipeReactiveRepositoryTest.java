@@ -23,7 +23,7 @@ class RecipeReactiveRepositoryTest {
     }
 
     @Test
-    public void testRecipeSave() throws Exception {
+    public void testRecipeSave() {
         Recipe recipe = new Recipe();
         recipe.setDescription("Yummy");
 
