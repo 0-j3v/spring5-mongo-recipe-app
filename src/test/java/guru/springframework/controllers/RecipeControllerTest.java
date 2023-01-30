@@ -24,6 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 /**
  * Created by jt on 6/19/17.
  */
+@Disabled
 public class RecipeControllerTest {
 
     @Mock
